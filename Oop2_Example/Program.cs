@@ -41,19 +41,26 @@ namespace Oop2_Example
             void Save();
         }
 
-        class TeacherCreditManager : ICreditManager
+        abstract class BaseCreditManager : ICreditManager
         {
-            public void Calculete()
+            public abstract void Calculete();
+
+            public virtual void Save()
+            {
+                Console.WriteLine("kaydedildi");
+            }
+        }
+        //dry kavramı
+        class TeacherCreditManager :BaseCreditManager , ICreditManager
+        {
+            public override void Calculete()
             {
 
                 //hesaplama
                 Console.WriteLine("öğr kredisi");
             }
 
-            public void Save()
-            {
-                throw new NotImplementedException();
-            }
+    
         }
         class MilitaryCreditManager : ICreditManager
         {
