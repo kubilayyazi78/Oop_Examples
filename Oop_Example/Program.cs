@@ -24,18 +24,21 @@ namespace Oop_Example
             CreditManager creditManager = new CreditManager();
             Customer customer = new Customer();
 
-            CustomerManager customerManager = new CustomerManager(); //örnek olusturma instance alma
+            CustomerManager customerManager = new CustomerManager(customer); //örnek olusturma instance alma
 
+
+            Compony compony = new Compony();
             customer.Id = 1;
             customer.FirstName = "Kubilay";
             customer.LastName = "Yazı";
             customer.NationalIdentity = "11111111111";
 
-            customerManager.Save(customer);
+            customerManager.Save();
 
             creditManager.Calculate();
 
-
+            customerManager.Save();
+            customerManager.Delete();
             Console.ReadKey();
         }
         class CreditManager
@@ -56,6 +59,11 @@ namespace Oop_Example
 
         class Customer
         {
+
+            public Customer()
+            {
+                Console.WriteLine("müşteri nesnesi başlatıldı");
+            }
             //public int Id
 
             public int Id { get; set; }
@@ -66,13 +74,31 @@ namespace Oop_Example
 
             public string NationalIdentity { get; set; }
             public string City { get; set; }
+
+         
         }
+
+        class Compony :Customer
+        {
+            public string TaxNumber { get; set; }
+        }
+
         // Katmanlı Mimari Görevleri farklı katmanlarda yapıyoruz
         class CustomerManager
         {
-            public void Save(Customer customer)
+            private Customer _customer;
+            public CustomerManager(Customer customer)
             {
-                
+                _customer = customer;
+            }
+            public void Save()
+            {
+                Console.WriteLine("müşteri kayıt " + _customer.FirstName);
+            }
+
+            public void Delete()
+            {
+                Console.WriteLine("müşteri silindi " + _customer.FirstName);
             }
         }
 
