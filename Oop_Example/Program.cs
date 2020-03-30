@@ -28,10 +28,14 @@ namespace Oop_Example
 
 
             Compony compony = new Compony();
+            compony.Id = 100;
+            Person person = new Person();
             customer.Id = 1;
             customer.FirstName = "Kubilay";
             customer.LastName = "Yazı";
-            customer.NationalIdentity = "11111111111";
+            person.NationalIdentity = "11111111111";
+
+            CustomerManager customerManager2 = new CustomerManager(new Compony());
 
             customerManager.Save();
 
@@ -72,10 +76,15 @@ namespace Oop_Example
 
             public string LastName { get; set; }
 
-            public string NationalIdentity { get; set; }
+            
             public string City { get; set; }
 
          
+        }
+
+        class Person : Customer
+        {
+            public string NationalIdentity { get; set; }
         }
 
         class Compony :Customer
