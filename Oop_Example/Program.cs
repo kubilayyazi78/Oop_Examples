@@ -22,6 +22,16 @@ namespace Oop_Example
 
             
             CreditManager creditManager = new CreditManager();
+            Customer customer = new Customer();
+
+            CustomerManager customerManager = new CustomerManager(); //örnek olusturma instance alma
+
+            customer.Id = 1;
+            customer.FirstName = "Kubilay";
+            customer.LastName = "Yazı";
+            customer.NationalIdentity = "11111111111";
+
+            customerManager.Save(customer);
 
             creditManager.Calculate();
 
@@ -33,13 +43,16 @@ namespace Oop_Example
             public void Calculate(){
                 Console.WriteLine("Hesaplandı");
              }
-
+            // public  void 
             public void Save()
             {
                 Console.WriteLine("Kredi Verildi");
             }
 
         }
+
+        //SOLID
+        //S CLASS BİR İŞİ YAPABİLİR 
 
         class Customer
         {
@@ -52,6 +65,15 @@ namespace Oop_Example
             public string LastName { get; set; }
 
             public string NationalIdentity { get; set; }
+            public string City { get; set; }
+        }
+        // Katmanlı Mimari Görevleri farklı katmanlarda yapıyoruz
+        class CustomerManager
+        {
+            public void Save(Customer customer)
+            {
+                
+            }
         }
 
       
