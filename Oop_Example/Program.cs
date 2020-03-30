@@ -6,7 +6,12 @@ namespace Oop_Example
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int sayi1 = 10;
+            int sayi2 = 20;
+            sayi1 = sayi2;
+            sayi2 = 100;
+            Console.WriteLine(sayi1);
+            Console.ReadKey();
         }
     }
 }
